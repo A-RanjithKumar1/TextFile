@@ -25,7 +25,7 @@ public class Frequency
     }
     public static void main(String[] args) throws FileNotFoundException {
         final Logger l =  Logger.getLogger("InfoLogging");
-        List s=  new ArrayList<String>();
+        List<String> s=  new ArrayList<String>();
         String dump;
         Map<String,Integer> words=new HashMap<String, Integer>();
         countWords("C:\\Users\\Tringapps-User13\\OneDrive\\Desktop\\Demo.txt",words);
