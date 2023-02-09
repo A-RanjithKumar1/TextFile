@@ -1,9 +1,14 @@
 package org.example;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.*;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.Map.Entry;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Supplier;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class Frequency
 {
     static void CountWords(String filename, Map<String, Integer> words) throws FileNotFoundException {
@@ -20,8 +25,25 @@ public class Frequency
         file.close();
     }
     public static void main(String[] args) throws FileNotFoundException {
+        final Logger l =  Logger.getLogger("InfoLogging");
+        List s=  new ArrayList();
+        String dump;
         Map<String,Integer> words=new HashMap<String, Integer>();
-        CountWords("\"C:\\Users\\Tringapps-User13\\OneDrive\\Desktop\\Demo.txt\"",words);
-        System.out.println(words);
+        CountWords("C:\\Users\\Tringapps-User13\\OneDrive\\Desktop\\Demo.txt",words);
+        l.log(Level.INFO,()->" "+ words);
+        List<String> keyList = new ArrayList(words.keySet());
+        List<Integer> valueList = new ArrayList(words.values());
+        l.log(Level.INFO,()->" "+keyList);
+        l.log(Level.INFO,()->" "+ valueList);
+        Collections.sort(valueList, Collections.reverseOrder());
+        for(int i:(valueList)){
+            for(Entry< String,Integer> entry: words.entrySet()) {
+                if(entry.getValue() == i) {
+                    dump=entry.getKey()+"--"+i;
+                    s.add(dump);
+                }
+            }
+        }
+        l.log(Level.INFO,()->""+s);
     }
 }
