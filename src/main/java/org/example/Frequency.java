@@ -6,12 +6,11 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Frequency
 {
-    static void CountWords(String filename, Map<String, Integer> words) throws FileNotFoundException {
+    static void countWords(String filename, Map<String, Integer> words) throws FileNotFoundException {
         Scanner file=new Scanner (new File(filename));
         while(file.hasNext()){
             String word=file.next();
@@ -29,10 +28,10 @@ public class Frequency
         List s=  new ArrayList();
         String dump;
         Map<String,Integer> words=new HashMap<String, Integer>();
-        CountWords("C:\\Users\\Tringapps-User13\\OneDrive\\Desktop\\Demo.txt",words);
+        countWords("C:\\Users\\Tringapps-User13\\OneDrive\\Desktop\\Demo.txt",words);
         l.log(Level.INFO,()->" "+ words);
-        List<String> keyList = new ArrayList(words.keySet());
-        List<Integer> valueList = new ArrayList(words.values());
+        List<String> keyList = new ArrayList<String>(words.keySet());
+        List<Integer> valueList = new ArrayList<Integer>(words.values());
         l.log(Level.INFO,()->" "+keyList);
         l.log(Level.INFO,()->" "+ valueList);
         Collections.sort(valueList, Collections.reverseOrder());
